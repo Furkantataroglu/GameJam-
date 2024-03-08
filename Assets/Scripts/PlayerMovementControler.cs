@@ -4,24 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {   
-    [Header ("Walking")]
+    [Header ("Swimming")]
     [SerializeField] private float speed; //walking speed
-    
+    [SerializeField] private float rotationspeed; 
     [SerializeField] private float currentSpeed; 
     [SerializeField] private float accelerationLerp; 
     [SerializeField] private float decelerationLerp; 
-    [Header ("jumping")]
-    [SerializeField]private float jumpForce; 
-    [SerializeField]private float jumpingGravityScale;
-    [SerializeField]private float normalGravityScale; 
-        [SerializeField]private float coyotiTime =.1f;   //cayotiTime
-    private float lastGroundedTime =-10f; 
-    [SerializeField]private float jumpBufferDuration = .1f;
-    private float lastJumpTryTime =-10f; 
-    [Header ("GroundCheck")]
-    [SerializeField]private Transform groundCheck;  
-    [SerializeField]private float groundCheckRadius;
-    [SerializeField]private LayerMask groundLayers;
+    
     private bool isGrounded;   
     
     private Rigidbody2D rb; 
@@ -32,14 +21,15 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         
-        
     }
 
     // Update is called once per frame
     void Update()
     {   
-     ManageWalking();
+        ManageWalking();
+        RotatePlayer();
     }
+
     private void FixedUpdate() 
     {
       
@@ -50,14 +40,11 @@ public class PlayerMovement : MonoBehaviour
         var xinput = Input.GetAxisRaw("Horizontal"); 
         var yinput = Input.GetAxisRaw("Vertical");
         
-       
-        
        //makes speed 0 if no input
         if(xinput == 0 && yinput == 0 )
         {
              currentSpeed = Mathf.Lerp(currentSpeed , 0f, accelerationLerp * Time.deltaTime);
         }
-        
         else if(rb.velocity.x > 0 && xinput > 0 || rb.velocity.x < 0 && xinput < 0)
         {
             currentSpeed = Mathf.Lerp(currentSpeed , speed, accelerationLerp * Time.deltaTime); 
@@ -69,7 +56,19 @@ public class PlayerMovement : MonoBehaviour
         }
         
         rb.velocity = new Vector2(xinput * currentSpeed , yinput * currentSpeed);    
-                                                     
-    
-    }                                              
+    }
+
+    private void RotatePlayer()
+    {
+        var xinput = Input.GetAxisRaw("Horizontal");
+
+        if (xinput > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0); // Rotate right
+        }
+        else if (xinput < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0); // Rotate left
+        }
+    }
 }
