@@ -58,17 +58,19 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(xinput * currentSpeed , yinput * currentSpeed);    
     }
 
-    private void RotatePlayer()
-    {
-        var xinput = Input.GetAxisRaw("Horizontal");
+   private void RotatePlayer()
+{
+    var xinput = Input.GetAxisRaw("Horizontal");
+    var yinput = Input.GetAxisRaw("Vertical");
 
-        if (xinput > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0); // Rotate right
-        }
-        else if (xinput < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0); // Rotate left
-        }
+    if (xinput > 0)
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0); // Sağa dön
     }
+    else if (xinput < 0)
+    {
+        transform.rotation = Quaternion.Euler(0, 180, 0); // Sola dön
+    }
+}
+
 }
