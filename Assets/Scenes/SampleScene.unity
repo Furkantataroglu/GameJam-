@@ -250,7 +250,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -261,7 +261,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &1585394400
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -373,23 +373,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1585394398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf8ea34d3209ec44a67d3631ccd025b, type: 3}
+  m_Script: {fileID: 11500000, guid: 384f2e847d1d0954f851ffab2738db9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
   currentSpeed: 0
-  accelerationLerp: 0
-  decelerationLerp: 0
-  jumpForce: 5
+  accelerationLerp: 3
+  decelerationLerp: 3
+  jumpForce: 0
   jumpingGravityScale: 0
   normalGravityScale: 0
   coyotiTime: 0.1
   jumpBufferDuration: 0.1
-  groundCheck: {fileID: 1935933966}
-  groundCheckRadius: 0.84
+  groundCheck: {fileID: 0}
+  groundCheckRadius: 0
   groundLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
 --- !u!1 &1935933963
 GameObject:
   m_ObjectHideFlags: 0
