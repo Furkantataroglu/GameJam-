@@ -22,7 +22,7 @@ public class KeyManager : MonoBehaviour
     {
        if(isPickedup)
        {
-         gameObject.SetActive(false);
+            gameObject.SetActive(false);
     
        }
     }
