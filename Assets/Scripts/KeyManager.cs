@@ -22,7 +22,7 @@ public class KeyManager : MonoBehaviour
     {
        if(isPickedup)
        {
-
+        gameObject.SetActive(false);
     
        }
     }
@@ -32,6 +32,7 @@ public class KeyManager : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && !isPickedup)
         {
             isPickedup=true;
+            door.GetComponent<DoorScript>().keyPickedUp = true;
         }
         
     }
