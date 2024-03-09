@@ -153,17 +153,29 @@ namespace TarodevController
         #region Horizontal
 
         private void HandleDirection()
+{
+    if (_frameInput.Move.x == 0)
+    {
+        var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
+        _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
+    }
+    else
+    {
+        // Hareket yönünü güncelle
+        _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+
+        // Karakterin yönünü döndür
+        if (_frameInput.Move.x > 0)
         {
-            if (_frameInput.Move.x == 0)
-            {
-                var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
-                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
-            }
-            else
-            {
-                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
-            }
+            transform.localScale = new Vector3(1, 1, 1); // Sağa doğru dön
         }
+        else if (_frameInput.Move.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1); // Sola doğru dön
+        }
+    }
+}
+
 
         #endregion
 
