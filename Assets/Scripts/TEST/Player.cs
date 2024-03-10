@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using Cinemachine;
-using Unity.VisualScripting;
 
 [RequireComponent (typeof (PlayerCollisionChecker), typeof (PlayerInput))]
 public class Player : MonoBehaviour {
@@ -57,8 +57,12 @@ public class Player : MonoBehaviour {
 	public event PlayerDelegate dashEvent;
 	public event PlayerDelegate deathEvent;
 
+	private Animator _animator;
 	
-
+	public void SetAnimator(Animator animator)
+	{
+		this._animator = animator;
+	}
 
 	void Start() {
 		playerCollisionChecker = GetComponent<PlayerCollisionChecker> ();
@@ -84,7 +88,28 @@ public class Player : MonoBehaviour {
 		if (isWallSliding) {
 			HandleWallSliding ();
 		}
-*/		HandleMove();
+*/		
+		HandleMove();
+
+		UpdateAnimator();
+		
+	}
+	
+	private void UpdateAnimator()
+	{
+		var xinput = Input.GetAxisRaw("Horizontal");
+		var yinput = Input.GetAxisRaw("Vertical");
+
+		_animator.SetFloat("IsRunningForward", Mathf.Abs(xinput));
+
+		if (!playerCollisionChecker.CollisionData.Below)
+		{
+			_animator.SetBool("InAir", true);
+		}
+		else
+		{
+			_animator.SetBool("InAir", false);
+		}
 		
 	}
 

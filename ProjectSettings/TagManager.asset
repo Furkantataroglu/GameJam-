@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Key
   - Interactable
-  - Through
+  - CameraZone
   layers:
   - Default
   - TransparentFX
@@ -14,7 +14,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Slope
+  - slope
   - 
   - 
   - 

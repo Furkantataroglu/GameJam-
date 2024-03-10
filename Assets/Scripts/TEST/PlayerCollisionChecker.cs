@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class PlayerCollisionChecker : RaycastController {
@@ -122,7 +122,7 @@ public class PlayerCollisionChecker : RaycastController {
 					if (CollisionData.IsFallingThroughPlatform) {
 						continue;
 					}
-					if (Input.GetKeyDown(KeyCode.S)) {
+					if (PlayerInput.y == -1) {
 						CollisionData.IsFallingThroughPlatform = true;
 						Invoke("ResetFallingThroughPlatform",.5f);
 						continue;
@@ -131,6 +131,7 @@ public class PlayerCollisionChecker : RaycastController {
 
 				moveAmount.y = (hit.distance - skinWidth) * directionY;
 				rayLength = hit.distance;
+
 				if (CollisionData.IsClimbingSlope) {
 					moveAmount.x = moveAmount.y / Mathf.Tan(CollisionData.SlopeAngle * Mathf.Deg2Rad) * directionX;
 				}
