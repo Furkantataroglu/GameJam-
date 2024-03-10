@@ -12,7 +12,7 @@ public class jumpGirlVista : MonoBehaviour
         {
             isCutsceneOn = true; // need to freeze the player
             OutroCutscene.SetActive(true);
-            Invoke(nameof(StopCutscene), 5f);
+            Invoke(nameof(StopCutscene), 15f);
         }
     }
 
