@@ -83,7 +83,7 @@ public class Player : MonoBehaviour {
 		if (isWallSliding) {
 			HandleWallSliding ();
 		}
-*/
+*/		
 		HandleMove();
 		
 	}
@@ -218,8 +218,8 @@ public class Player : MonoBehaviour {
 			velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (playerCollisionChecker.CollisionData.Below)?accelGrounded:accelAirborne);
 			velocity.y += gravity * Time.deltaTime;
 		}
+		
 	}
-
 	void UpdateVerticalVelocityAfterMove() {
 		if (playerCollisionChecker.CollisionData.Above || playerCollisionChecker.CollisionData.Below) {
 			if (playerCollisionChecker.CollisionData.IsSlidingDownSlope) { 
