@@ -215,9 +215,6 @@ public class Player : MonoBehaviour {
 	void CalculateVelocity() {
 		if(!isDashing){
 			float targetVelocityX = directionalInput.x * moveSpeed;
-			 if (directionalInput.x != 0) {
-            transform.localScale = new Vector3(directionalInput.x *10, 10, 10); // rotates character
-        }
 			velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (playerCollisionChecker.CollisionData.Below)?accelGrounded:accelAirborne);
 			velocity.y += gravity * Time.deltaTime;
 		}
