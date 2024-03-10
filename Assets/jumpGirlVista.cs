@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartCutscene : MonoBehaviour
+public class jumpGirlVista : MonoBehaviour
 {
     public static bool isCutsceneOn;
-    [SerializeField] Animator camAnim;  
     [SerializeField] GameObject OutroCutscene; 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             isCutsceneOn = true; // need to freeze the player
-            camAnim.SetBool("cutscene1", true);
+           
             Invoke(nameof(StopCutscene), 3f);
         }
     }
@@ -20,8 +19,7 @@ public class StartCutscene : MonoBehaviour
     void StopCutscene()
     {
         isCutsceneOn = false;
-        camAnim.SetBool("cutscene1", false);
         Destroy(gameObject);
+        OutroCutscene.SetActive(true);
     }
 }
-
