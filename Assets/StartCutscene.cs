@@ -6,7 +6,6 @@ public class StartCutscene : MonoBehaviour
 {
     public static bool isCutsceneOn;
     [SerializeField] Animator camAnim;  
-    [SerializeField] GameObject OutroCutscene; 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")

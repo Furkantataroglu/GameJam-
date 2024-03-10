@@ -11,8 +11,8 @@ public class jumpGirlVista : MonoBehaviour
         if (collision.tag == "Player")
         {
             isCutsceneOn = true; // need to freeze the player
-           
-            Invoke(nameof(StopCutscene), 3f);
+            OutroCutscene.SetActive(true);
+            Invoke(nameof(StopCutscene), 5f);
         }
     }
 
@@ -20,6 +20,6 @@ public class jumpGirlVista : MonoBehaviour
     {
         isCutsceneOn = false;
         Destroy(gameObject);
-        OutroCutscene.SetActive(true);
+        
     }
 }

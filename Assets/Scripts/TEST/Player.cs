@@ -55,7 +55,6 @@ public class Player : MonoBehaviour {
 	public event PlayerDelegate jumpEvent;
 	public event PlayerDelegate dashEvent;
 	public event PlayerDelegate deathEvent;
-
 	
 
 
@@ -84,7 +83,11 @@ public class Player : MonoBehaviour {
 			HandleWallSliding ();
 		}
 */		
-		HandleMove();
+		if (jumpGirlVista.isCutsceneOn == false && StartCutscene.isCutsceneOn == false)
+		{
+			HandleMove();
+		}
+		
 		
 	}
 
