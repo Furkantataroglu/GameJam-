@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
             underWaterController.enabled = false;
             animator.SetBool("IsSwimming", false);
             rb.gravityScale = _cachedGravity;
+            rb.bodyType = RigidbodyType2D.Kinematic;
         }
         else
         {
@@ -44,6 +45,7 @@ public class PlayerManager : MonoBehaviour
             groundController.enabled = false;
             underWaterController.enabled = true;
             rb.gravityScale = 0f;
+            rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 }
