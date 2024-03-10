@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Cinemachine;
+using Unity.VisualScripting;
 
 [RequireComponent (typeof (PlayerCollisionChecker), typeof (PlayerInput))]
 public class Player : MonoBehaviour {
@@ -83,8 +84,7 @@ public class Player : MonoBehaviour {
 		if (isWallSliding) {
 			HandleWallSliding ();
 		}
-*/		
-		HandleMove();
+*/		HandleMove();
 		
 	}
 
