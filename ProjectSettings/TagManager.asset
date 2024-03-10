@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Key
   - Interactable
+  - Vista
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Water
   - UI
   - slope
-  - 
+  - Vista
   - 
   - 
   - 
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: SecondLayer
     uniqueID: 9946183
+    locked: 0
+  - name: Vista
+    uniqueID: 473866569
     locked: 0
