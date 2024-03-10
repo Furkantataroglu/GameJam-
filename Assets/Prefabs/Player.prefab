@@ -12,14 +12,14 @@ GameObject:
   - component: {fileID: 2125169878086108397}
   - component: {fileID: 4814812175016020942}
   - component: {fileID: 1803840678541595949}
-  - component: {fileID: 4465412119768100179}
   - component: {fileID: 5998066913699039248}
   - component: {fileID: 5560916393844752892}
   - component: {fileID: 8076906017110767520}
   - component: {fileID: -3261517589277782371}
+  - component: {fileID: -4883315905820502188}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,31 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102403182ae8ad04b9aad7f02395e0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4465412119768100179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5181591960774845369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c2cf2eebeaf6d4d871c5517d7eb195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 9
-  wallSlideSpeedMax: 3
-  dashDistance: 5
-  dashTime: 0.2
-  wallStickTime: 0.25
-  deathDelay: 2
-  maxJumpHeight: 4
-  minJumpHeight: 1
-  timeToJumpApex: 0.4
-  wallJumpClimb: {x: 6, y: 24}
-  wallJump: {x: 16, y: 24}
-  accelAirborne: 0.2
-  accelGrounded: 0.1
 --- !u!61 &5998066913699039248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -246,3 +221,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4883315905820502188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181591960774845369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c2cf2eebeaf6d4d871c5517d7eb195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 110
+  wallSlideSpeedMax: 3
+  dashDistance: 5
+  dashTime: 0.2
+  wallStickTime: 0.25
+  deathDelay: 2
+  maxJumpHeight: 50
+  minJumpHeight: 10
+  timeToJumpApex: 0.4
+  wallJumpClimb: {x: 6, y: 24}
+  wallJump: {x: 16, y: 24}
+  accelAirborne: 0.2
+  accelGrounded: 0.1

@@ -83,7 +83,7 @@ public class Player : MonoBehaviour {
 		if (isWallSliding) {
 			HandleWallSliding ();
 		}
-*/
+*/		
 		HandleMove();
 		
 	}
@@ -215,14 +215,15 @@ public class Player : MonoBehaviour {
 	void CalculateVelocity() {
 		if(!isDashing){
 			float targetVelocityX = directionalInput.x * moveSpeed;
-			 if (directionalInput.x != 0) {
-            transform.localScale = new Vector3(directionalInput.x *10, 10, 10); // rotates character
-        }
 			velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (playerCollisionChecker.CollisionData.Below)?accelGrounded:accelAirborne);
 			velocity.y += gravity * Time.deltaTime;
 		}
+		  if (directionalInput.x < 0) {
+        transform.localScale = new Vector3(-10, 10, 10); // Sprite'ı ters çevir
+    } else if (directionalInput.x > 0) {
+        transform.localScale = new Vector3(10, 10, 10); // Orijinal yönüne dön
+    }
 	}
-
 	void UpdateVerticalVelocityAfterMove() {
 		if (playerCollisionChecker.CollisionData.Above || playerCollisionChecker.CollisionData.Below) {
 			if (playerCollisionChecker.CollisionData.IsSlidingDownSlope) { 
