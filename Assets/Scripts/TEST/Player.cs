@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using Cinemachine;
 
@@ -55,8 +56,13 @@ public class Player : MonoBehaviour {
 	public event PlayerDelegate jumpEvent;
 	public event PlayerDelegate dashEvent;
 	public event PlayerDelegate deathEvent;
-	
 
+	private Animator _animator;
+	
+	public void SetAnimator(Animator animator)
+	{
+		this._animator = animator;
+	}
 
 	void Start() {
 		playerCollisionChecker = GetComponent<PlayerCollisionChecker> ();
@@ -83,11 +89,27 @@ public class Player : MonoBehaviour {
 			HandleWallSliding ();
 		}
 */		
-		if (jumpGirlVista.isCutsceneOn == false && StartCutscene.isCutsceneOn == false)
-		{
-			HandleMove();
-		}
+		HandleMove();
+
+		UpdateAnimator();
 		
+	}
+	
+	private void UpdateAnimator()
+	{
+		var xinput = Input.GetAxisRaw("Horizontal");
+		var yinput = Input.GetAxisRaw("Vertical");
+
+		_animator.SetFloat("IsRunningForward", Mathf.Abs(xinput));
+
+		if (!playerCollisionChecker.CollisionData.Below)
+		{
+			_animator.SetBool("InAir", true);
+		}
+		else
+		{
+			_animator.SetBool("InAir", false);
+		}
 		
 	}
 

@@ -5,8 +5,8 @@ using UnityEngine;
 public class ForceUnderWaterController : MonoBehaviour
 {
     [Header ("Swimming")]
-    [SerializeField] private float maxAccelerationForce = 2; // Limit the acceleration force
-    [SerializeField] private float maxDecelerationForce = 2; // Limit the deceleration force
+    [SerializeField] private float maxAccelerationForce = 4; // Limit the acceleration force
+    [SerializeField] private float maxDecelerationForce = 14; // Limit the deceleration force
     private Animator animator;
 
     private Rigidbody2D rb;
