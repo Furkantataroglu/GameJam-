@@ -1,4 +1,4 @@
-using System;
+  using System;
 using UnityEngine;
 
 namespace TarodevController
@@ -19,6 +19,7 @@ namespace TarodevController
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+        private Animator animator;
 
         #region Interface
 
@@ -29,6 +30,11 @@ namespace TarodevController
         #endregion
 
         private float _time;
+        
+        public void SetAnimator(Animator animator)
+        {
+            this.animator = animator;
+        }
 
         private void Awake()
         {
@@ -42,6 +48,23 @@ namespace TarodevController
         {
             _time += Time.deltaTime;
             GatherInput();
+            UpdateAnimator();
+        }
+
+        private void UpdateAnimator()
+        {
+            var xinput = Input.GetAxisRaw("Horizontal");
+            //var yinput = Input.GetAxisRaw("Vertical");
+            
+            animator.SetFloat("IsRunningForward", Mathf.Abs(xinput));
+            if (_grounded)
+            {
+                animator.SetBool("InAir", false);
+            }
+            else
+            {
+                animator.SetBool("InAir", true);
+            }
         }
 
         private void GatherInput()
@@ -153,28 +176,28 @@ namespace TarodevController
         #region Horizontal
 
         private void HandleDirection()
-{
-    if (_frameInput.Move.x == 0)
-    {
-        var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
-        _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
-    }
-    else
-    {
-        // Hareket yönünü güncelle
-        _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+        {
+            if (_frameInput.Move.x == 0)
+            {
+                var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
+                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
+            }
+            else
+            {
+                // Hareket yönünü güncelle
+                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
 
-        // Karakterin yönünü döndür
-        if (_frameInput.Move.x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1); // Sağa doğru dön
-        }
-        else if (_frameInput.Move.x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1); // Sola doğru dön
-        }
-    }
-}
+                // Karakterin yönünü döndür
+                if (_frameInput.Move.x > 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 1); // Sağa doğru dön
+                }
+                else if (_frameInput.Move.x < 0)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1); // Sola doğru dön
+                } 
+            }
+        } 
 
 
         #endregion
