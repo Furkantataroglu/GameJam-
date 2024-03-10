@@ -33,6 +33,8 @@ public class KeyManager : MonoBehaviour
         {
             isPickedup=true;
             door.GetComponent<DoorScript>().keyPickedUp = true;
+            Animator animator = door.GetComponent<Animator>();
+            animator.SetBool("isDoorOpen", true);
         }
         
     }

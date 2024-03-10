@@ -67,7 +67,7 @@ public class ForceUnderWaterController : MonoBehaviour
             // Limit the acceleration force
             if (accelerationForce.magnitude > maxAccelerationForce)
             {
-                accelerationForce = accelerationForce.normalized * maxAccelerationForce;
+                accelerationForce = accelerationForce.normalized;
             }
             
             rb.AddForce(accelerationForce, ForceMode2D.Force);
