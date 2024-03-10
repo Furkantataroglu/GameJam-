@@ -155,6 +155,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+		
+
 		Debug.Log(transform.position.x-other.gameObject.transform.position.x);
 		if(other.tag == "Trap") {
 			OnDeath();
