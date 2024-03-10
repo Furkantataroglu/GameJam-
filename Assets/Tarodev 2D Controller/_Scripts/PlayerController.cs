@@ -74,7 +74,10 @@ namespace TarodevController
             HandleDirection();
             HandleGravity();
             
-            ApplyMovement();
+            if (StartCutscene.isCutsceneOn == false)
+            {
+                ApplyMovement();
+            }
         }
 
         #region Collisions
