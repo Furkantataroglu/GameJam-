@@ -33,6 +33,7 @@ public class PlayerManager : MonoBehaviour
             animator.SetBool("IsSwimming", true);
             groundController.enabled = false;
             underWaterController.enabled = true;
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }
