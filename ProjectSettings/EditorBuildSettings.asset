@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest CutScene.unity
     guid: 9a26a531cf84826448d04596596d229f
   - enabled: 1
-    path: Assets/Scenes/Platform.unity
-    guid: 9e872f4683b3cac4ebd1a8eb40d9eed3
+    path: Assets/Scenes/DiveScene.unity
+    guid: 1f7cb646ea579034496c621a3434c015
+  - enabled: 1
+    path: Assets/Scenes/HouseScene.unity
+    guid: e788b638d56f8064ea1de0b12f3da776
   m_configObjects: {}
