@@ -7,6 +7,9 @@ TagManager:
   - Key
   - Interactable
   - CameraZone
+  - Obstacle
+  - Vista
+  - Through
   layers:
   - Default
   - TransparentFX

@@ -245,11 +245,12 @@ public class Player : MonoBehaviour {
 			velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (playerCollisionChecker.CollisionData.Below)?accelGrounded:accelAirborne);
 			velocity.y += gravity * Time.deltaTime;
 		}
-		  if (directionalInput.x < 0) {
-        transform.localScale = new Vector3(-10, 10, 10); // Sprite'ı ters çevir
-    } else if (directionalInput.x > 0) {
-        transform.localScale = new Vector3(10, 10, 10); // Orijinal yönüne dön
-    }
+		if (directionalInput.x < 0) {
+    transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+} else if (directionalInput.x > 0) {
+    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+}
+
 	}
 	void UpdateVerticalVelocityAfterMove() {
 		if (playerCollisionChecker.CollisionData.Above || playerCollisionChecker.CollisionData.Below) {
