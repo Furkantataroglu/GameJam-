@@ -4182,14 +4182,14 @@ PolygonCollider2D:
       - {x: 3.46, y: 8.375}
       - {x: 3.4399998, y: 8.3949995}
       - {x: 3.4099998, y: 8.385}
-    - - {x: 29.519999, y: 43.004997}
-      - {x: 29.51, y: 42.975}
-      - {x: 29.51, y: 42.954998}
-      - {x: 29.539999, y: 42.934998}
-      - {x: 29.57, y: 42.934998}
-      - {x: 29.599998, y: 42.965}
-      - {x: 29.599998, y: 42.985}
-      - {x: 29.58, y: 43.004997}
+    - - {x: 29.323599, y: 43.484535}
+      - {x: 29.151577, y: 43.462723}
+      - {x: 29.25305, y: 43.401802}
+      - {x: 29.333778, y: 43.391624}
+      - {x: 29.36706, y: 43.406353}
+      - {x: 29.408512, y: 43.431442}
+      - {x: 29.457613, y: 43.43671}
+      - {x: 29.503077, y: 43.482895}
   m_UseDelaunayMesh: 0
 --- !u!1 &1189895919
 GameObject:
@@ -4829,11 +4829,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4883315905820502188, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4883315905820502188, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
       propertyPath: moveSpeed
       value: 110
       objectReference: {fileID: 0}
     - target: {fileID: -3261517589277782371, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
       propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803840678541595949, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2125169878086108397, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
@@ -4913,14 +4921,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7198445227153092888, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
+      propertyPath: maxSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198445227153092888, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198445227153092888, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
       propertyPath: maxAccelerationForce
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7198445227153092888, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
       propertyPath: maxDecelerationForce
-      value: 20
+      value: 2.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8076906017110767520, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
+    - {fileID: 5560916393844752892, guid: 07e86e7652e1b474a88d638edea81689, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

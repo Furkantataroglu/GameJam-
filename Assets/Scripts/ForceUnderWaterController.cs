@@ -5,10 +5,10 @@ using UnityEngine;
 public class ForceUnderWaterController : MonoBehaviour
 {
     [Header ("Swimming")]
-    [SerializeField] private float maxAccelerationForce = 4; // Limit the acceleration force
-    [SerializeField] private float maxDecelerationForce = 14; // Limit the deceleration force
+    [SerializeField] private float maxAccelerationForce ; // Limit the acceleration force
+    [SerializeField] private float maxDecelerationForce; // Limit the deceleration force
+    [SerializeField] private float maxSpeed; // Limit the max speed
     private Animator animator;
-
     private Rigidbody2D rb;
 
     private void Awake()
@@ -42,7 +42,7 @@ public class ForceUnderWaterController : MonoBehaviour
     {
         var xinput = Input.GetAxisRaw("Horizontal");
         var yinput = Input.GetAxisRaw("Vertical");
-        
+
         if (xinput == 0 && yinput == 0)
         {
             // Calculate deceleration force
@@ -54,25 +54,29 @@ public class ForceUnderWaterController : MonoBehaviour
             {
                 decelerationForce = decelerationForce.normalized * maxDecelerationForce;
             }
-            
+
             rb.AddForce(decelerationForce, ForceMode2D.Force);
-            
         }
         else
         {
             // Calculate acceleration force
             Vector2 accelerationDirection = new Vector2(xinput, yinput).normalized;
             Vector2 accelerationForce = accelerationDirection * maxAccelerationForce;
-            
+
             // Limit the acceleration force
             if (accelerationForce.magnitude > maxAccelerationForce)
             {
-                accelerationForce = accelerationForce.normalized;
+                accelerationForce = accelerationForce.normalized * maxAccelerationForce;
             }
-            
+
             rb.AddForce(accelerationForce, ForceMode2D.Force);
+
+            // Limit the speed
+            if (rb.velocity.magnitude > maxSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * maxSpeed;
+            }
         }
-        
     }
 
     private void RotatePlayer()
